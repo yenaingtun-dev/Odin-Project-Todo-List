@@ -1,21 +1,38 @@
 const form = document.querySelector('#form');
 const todoInput = document.querySelector('#todo');
-const tasks = document.querySelector('.tasks');
+const todoList = document.querySelector('.tasks');
 
-form.addEventListener('click', (e) => {
+form.addEventListener("submit", addTodo);
+
+function addTodo(e){
     e.preventDefault();
-    if (todoInput.value !== '') {
-        const li = document.createElement('li');
-        li.innerHTML = `${todoInput.value} <button id="delete">delete</button> <button id="complete">complete</button>`;
-        tasks.appendChild(li)
-        todoInput.value = '';
-        const deleteTask =  document.getElementById('delete');
-        const completeTask =  document.getElementById('complete');
-        deleteTask.addEventListener('click', (e) => {
-            // console.log(li.parentNode.removeChild(li));
-        });
-        completeTask.addEventListener('click', (e) => {
-            e.target.style.textDecoration =  "line-through";
-        });
-    }
-})
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+    const newTodo = document.createElement("li");
+    newTodo.classList.add("todo-item");
+    newTodo.innerText = todoInput.value;
+    todoDiv.appendChild(newTodo);
+    todoInput.value = "";
+    // complete button
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = `<button>complete</button>`;
+    completedButton.classList.add("complete-btn");
+    todoDiv.appendChild(completedButton);
+    completedButton.addEventListener('click', () => {
+        if (newTodo.style.textDecoration == 'line-through') {
+            newTodo.style.textDecoration = 'none';
+        } else {
+            newTodo.style.textDecoration = 'line-through';
+        }
+    });
+    //trash button
+    const trashButton = document.createElement("button");
+    trashButton.innerHTML = `<button">delete</button>`;
+    trashButton.classList.add("trash-btn");
+    todoDiv.appendChild(trashButton);
+    trashButton.addEventListener('click', () => {
+        newTodo.parentNode.remove();
+    });
+    //attach final Todo
+    todoList.appendChild(todoDiv);
+}
