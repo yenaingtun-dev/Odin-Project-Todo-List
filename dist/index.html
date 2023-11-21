@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Odin Project Todo List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Todo List</h1>
-    <form action="" id="form">
-        <label for="todo">Todo</label>
-        <input name="todo" id="todo" type="text">
-        <button type="submit">Add</button>
-    </form>
-    <ul class="tasks">
-    </ul>
+
+<body class="h-screen flex flex-col items-center">
+    <section class="max-w-xl">
+            <h1 class="text-4xl my-10">Todos</h1>
+            <form class="" id="form">
+                <div class="rounded-lg shadow-lg flex items-center justify-between">
+                    <input type="text" id="todo" placeholder="Todo" class="py-1 px-4 focus:outline-none w-full" />
+                    <button
+                        class="bg-blue-300 text-white py-2 px-4 rounded-r-lg border-l border-gray-200 hover:bg-blue-500 active:bg-gray-200  inline-flex items-center focus:outline-none">Submit</button>
+                </div>
+            </form>
+            <ul class="tasks mt-5 p-2">
+                <!-- <div class="flex justify-between items-center bg-yellow-200 text-gray-500 rounded-lg px-3 py-1">
+                    <li>new</li>
+                    <div>
+                        <button class="bg-teal-200 px-2 py-1 rounded-lg text-teal-600 hover:bg-teal-300 text-xs">complete</button>
+                        <button class="bg-rose-200 px-2 py-1 rounded-lg text-rose-600 hover:bg-rose-300 text-xs">delete</button>
+                    </div>
+                </div> -->
+            </ul>
+    </section>
 
     <script src="./main.js"></script>
 </body>
+
 </html>
