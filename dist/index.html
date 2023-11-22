@@ -20,37 +20,37 @@
                 <button @click="showModal = !showModal" class="text-4xl hover:text-white">+</button>
                 <div x-cloak x-transition.opacity x-show="showModal" class="fixed inset-0 bg-black/50"></div>
                 <div x-cloak x-transition x-show="showModal" class="fixed inset-x-0 top-5 z-50 grid place-content-center">
-                    <div @click.away="showModal = false" class="sm:w-[500px] bg-white">
+                    <div @click.away="showModal = false" class="rounded-lg w-80 sm:w-[500px] bg-white">
                             <form action="" class="mb-0 mt-6 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8">
-                                <p class="text-center text-lg font-medium">Create New Todo</p>
+                                <p class="text-lg font-medium">Create New Todo</p>
                                 <div>
                                     <div class="relative">
-                                        <input type="text" id="todo" class="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm"
+                                        <input type="text" id="todo" class="w-full rounded-lg border-gray-200 p-4 text-sm shadow"
                                             placeholder="Title" />
                                     </div>
                                 </div>
                                 <div>
                                     <div class="relative">
-                                        <textarea id="description" class="mt-2 w-full p-4 rounded-lg border-gray-200 align-top shadow-sm sm:text-sm" rows="4" placeholder="Description"></textarea>
+                                        <textarea id="description" class="mt-2 w-full p-4 rounded-lg border-gray-200 align-top shadow sm:text-sm" rows="4" placeholder="Description"></textarea>
                                     </div>
                                 </div>
                                 <fieldset class="flex flex-wrap gap-3">
                                     <div>
                                         <input type="radio" name="priority" value="urgent" id="urgent" class="peer hidden" checked />
                                         <label for="urgent"
-                                            class="flex cursor-pointer items-center justify-center rounded-md border border-gray-100 bg-white px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white">
+                                            class="flex cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white">
                                             <p class="text-sm font-medium">Urgent</p>
                                         </label>
                                     </div>
                                     <div>
                                         <input type="radio" name="priority" value="notUrgent" id="notUrgent" class="peer hidden" />
                                         <label for="notUrgent"
-                                            class="flex cursor-pointer items-center justify-center rounded-md border border-gray-100 bg-white px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white">
+                                            class="flex cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white">
                                             <p class="text-sm font-medium">Not Urgent</p>
                                         </label>
                                     </div>
                                 </fieldset>
-                                <div class="w-full rounded-lg border-gray-200 p-4 text-sm shadow-sm" x-data x-init="flatpickr($refs.dateInput, {altInput: true,altFormat: 'F j, Y',dateFormat: 'Y-m-d'})">
+                                <div class="w-full rounded-lg border-gray-200 p-4 text-sm shadow" x-data x-init="flatpickr($refs.dateInput, {altInput: true,altFormat: 'F j, Y',dateFormat: 'Y-m-d'})">
                                     <input x-ref="dateInput" type="text" id="dueDate" placeholder="YYYY-MM-DD" class="w-full" />
                                 </div>
                                 <button type="submit" class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
