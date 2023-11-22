@@ -9,25 +9,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-screen flex flex-col items-center">
+<body class="h-screen flex flex-col items-center bg-[#FFC8DD]">
     <section class="max-w-xl">
             <h1 class="text-4xl my-10">Todos</h1>
             <form class="" id="form">
-                <div class="rounded-lg shadow-lg flex items-center justify-between">
-                    <input type="text" id="todo" placeholder="Todo" class="py-1 px-4 focus:outline-none w-full" />
+                <div class="rounded-lg shadow-lg flex items-center justify-between bg-white">
+                    <input type="text" id="todo" placeholder="Todo" class="bg-transparent py-1 px-4 focus:outline-none w-full" />
                     <button
-                        class="bg-blue-300 text-white py-2 px-4 rounded-r-lg border-l border-gray-200 hover:bg-blue-500 active:bg-gray-200  inline-flex items-center focus:outline-none">Submit</button>
+                        class="bg-[#264653] text-white py-2 px-4 rounded-r-lg hover:bg-[#CDB4DB] inline-flex items-center focus:outline-none">Submit</button>
                 </div>
             </form>
-            <ul class="tasks mt-5 p-2">
-                <!-- <div class="flex justify-between items-center bg-yellow-200 text-gray-500 rounded-lg px-3 py-1">
-                    <li>new</li>
-                    <div>
-                        <button class="bg-teal-200 px-2 py-1 rounded-lg text-teal-600 hover:bg-teal-300 text-xs">complete</button>
-                        <button class="bg-rose-200 px-2 py-1 rounded-lg text-rose-600 hover:bg-rose-300 text-xs">delete</button>
-                    </div>
-                </div> -->
-            </ul>
+            <ul class="tasks mt-5 p-2"></ul>
     </section>
 
     <script src="./main.js"></script>

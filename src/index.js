@@ -9,7 +9,7 @@ function addTodo(e) {
     e.preventDefault();
     if (todoInput.value !== '') {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-yellow-200', 'text-gray-500', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
         const newTodo = document.createElement("li");
         newTodo.classList.add("todo-item");
         newTodo.innerText = todoInput.value;
@@ -25,23 +25,23 @@ function addTodo(e) {
         // complete button
         const completedButton = document.createElement("button");
         completedButton.innerHTML = `complete`;
-        completedButton.classList.add('complete-btn', 'bg-teal-200', 'px-2', 'py-1', 'mr-1', 'rounded-lg', 'text-teal-600', 'hover:bg-teal-300', 'text-xs');
+        completedButton.classList.add('complete-btn', 'bg-[#BDE0FE]', 'px-2', 'py-1', 'mr-1', 'rounded-lg', 'hover:text-white', 'hover:bg-[#A2D2FF]', 'text-xs');
         btnDiv.appendChild(completedButton);
         completedButton.addEventListener('click', (e) => {
             if (newTodo.style.textDecoration == 'line-through') {
                 newTodo.style.textDecoration = 'none';
-                todoDiv.style.backgroundColor = 'yellow';
+                todoDiv.style.backgroundColor = 'white';
                 completedButton.innerHTML = 'complete';
             } else {
                 newTodo.style.textDecoration = 'line-through';
-                todoDiv.style.backgroundColor = 'green';
+                todoDiv.style.backgroundColor = '#CDB4DB';
                 completedButton.innerHTML = 'completed';
             }
         });
         //trash button
         const trashButton = document.createElement("button");
         trashButton.innerHTML = `delete`;
-        trashButton.classList.add('trash-btn', 'bg-rose-200', 'px-2', 'py-1', 'rounded-lg', 'text-rose-600', 'hover:bg-rose-300', 'text-xs');
+        trashButton.classList.add('trash-btn', 'bg-[#FFC8DD]', 'px-2', 'py-1', 'rounded-lg', 'hover:text-white', 'hover:bg-[#FFAFCC]', 'text-xs');
         btnDiv.appendChild(trashButton);
         trashButton.addEventListener('click', (e) => {
             if (confirm("Delete a todo!") == true) {
@@ -103,7 +103,7 @@ function getTodos() {
     }
     todos.forEach(function (todo) {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-yellow-200', 'text-gray-500', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'text-gray-500', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
         const newTodo = document.createElement("li");
         newTodo.classList.add("todo-item");
         newTodo.innerText = todo;
@@ -120,23 +120,23 @@ function getTodos() {
         // complete button
         const completedButton = document.createElement("button");
         completedButton.innerHTML = `complete`;
-        completedButton.classList.add('complete-btn', 'bg-teal-200', 'px-2', 'py-1', 'mr-1', 'rounded-lg', 'text-teal-600', 'hover:bg-teal-300', 'text-xs');
+        completedButton.classList.add('complete-btn', 'bg-[#BDE0FE]', 'px-2', 'py-1', 'mr-1', 'rounded-lg', 'hover:text-white', 'hover:bg-[#A2D2FF]', 'text-xs');
         btnDiv.appendChild(completedButton);
         completedButton.addEventListener('click', (e) => {
             if (newTodo.style.textDecoration == 'line-through') {
                 newTodo.style.textDecoration = 'none';
-                todoDiv.style.backgroundColor = 'yellow';
+                todoDiv.style.backgroundColor = 'white';
                 completedButton.innerHTML = 'complete';
             } else {
                 newTodo.style.textDecoration = 'line-through';
-                todoDiv.style.backgroundColor = 'green';
+                todoDiv.style.backgroundColor = '#CDB4DB';
                 completedButton.innerHTML = 'completed';
             }
         });
         //trash button
         const trashButton = document.createElement("button");
         trashButton.innerHTML = `delete`;
-        trashButton.classList.add('trash-btn', 'bg-rose-200', 'px-2', 'py-1', 'rounded-lg', 'text-rose-600', 'hover:bg-rose-300', 'text-xs');
+        trashButton.classList.add('trash-btn', 'bg-[#FFC8DD]', 'px-2', 'py-1', 'rounded-lg', 'hover:text-white', 'hover:bg-[#FFAFCC]', 'text-xs');
         btnDiv.appendChild(trashButton);
         trashButton.addEventListener('click', (e) => {
             if (confirm("Delete a todo!") == true) {
