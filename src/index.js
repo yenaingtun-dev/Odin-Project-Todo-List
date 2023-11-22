@@ -144,7 +144,6 @@ function getTodos() {
             }
         });
         todoDiv.append(btnDiv);
-        //attach final Todo
         todoList.appendChild(todoDiv);
     });
 }

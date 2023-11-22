@@ -16,10 +16,22 @@
                 <div class="rounded-lg shadow-lg flex items-center justify-between bg-white">
                     <input type="text" id="todo" placeholder="Todo" class="bg-transparent py-1 px-4 focus:outline-none w-full" />
                     <button
-                        class="bg-[#264653] text-white py-2 px-4 rounded-r-lg hover:bg-[#CDB4DB] inline-flex items-center focus:outline-none">Submit</button>
+                        class="bg-[#264653] text-white py-2 px-4 rounded-r-lg hover:bg-[#2a9d8f] inline-flex items-center focus:outline-none">Submit</button>
                 </div>
             </form>
-            <ul class="tasks mt-5 p-2"></ul>
+            <ul class="tasks mt-5 p-2">
+                <div class="flex justify-between space-x-3 bg-white rounded-lg px-3 py-3">
+                    <div>
+                        <li class="text-red-300 font-semibold uppercase">Lorem ipsum dolor sit amet.</li>
+                        <p class="text-xs w-60 my-1" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, sapiente voluptates! Fugiat odit libero ratione beatae voluptates! Voluptatem, saepe explicabo.</p>
+                        <p class="text-xs my-1 font-semibold underline">Due: 22.11.2023</p>
+                    </div>
+                    <div>
+                        <button class="bg-[#BDE0FE] px-2 py-1 rounded-lg text-teal-600 hover:bg-[#A2D2FF] hover:text-white text-xs">complete</button>
+                        <button class="bg-[#FFC8DD] px-2 py-1 rounded-lg hover:bg-[#FFAFCC] hover:text-white text-xs">delete</button>
+                    </div>
+                </div>
+            </ul>
     </section>
 
     <script src="./main.js"></script>
