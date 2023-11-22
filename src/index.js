@@ -74,7 +74,7 @@ function addTodo(e) {
             description: newTodoDescription.innerHTML,
             duedate: newTodoDueDate.innerHTML,
             notUrgent: todoNotUrgent.checked,
-            Urgent: todoUrgent.checked,
+            urgent: todoUrgent.checked,
         });
     } else {
         alert('u need to add todo');
