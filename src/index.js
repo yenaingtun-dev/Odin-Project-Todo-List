@@ -11,10 +11,10 @@ function addTodo(e) {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
         const newTodo = document.createElement("li");
-        newTodo.classList.add("todo-item");
+        newTodo.classList.add("todo-item", "w-28");
         newTodo.innerText = todoInput.value;
         todoDiv.appendChild(newTodo);
-        todoDiv.addEventListener('dblclick', (e) => {
+        newTodo.addEventListener('dblclick', (e) => {
             const editTodo = prompt('edit todo', newTodo.innerHTML);
             if (editTodo !== null && editTodo !== '') {
                 newTodo.innerHTML = editTodo;
@@ -103,12 +103,12 @@ function getTodos() {
     }
     todos.forEach(function (todo) {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'text-gray-500', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
         const newTodo = document.createElement("li");
-        newTodo.classList.add("todo-item");
+        newTodo.classList.add("todo-item", "w-28");
         newTodo.innerText = todo;
         todoDiv.appendChild(newTodo);
-        todoDiv.addEventListener('dblclick', (e) => {
+        newTodo.addEventListener('dblclick', (e) => {
             const editTodo = prompt('edit todo', newTodo.innerHTML);
             if (editTodo !== null && editTodo !== '') {
                 removeLocalTodos(e.target);
