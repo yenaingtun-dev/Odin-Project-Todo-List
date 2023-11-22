@@ -9,11 +9,17 @@ function addTodo(e) {
     e.preventDefault();
     if (todoInput.value !== '') {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
+        const textDiv = document.createElement('div');
         const newTodo = document.createElement("li");
-        newTodo.classList.add("todo-item", "w-28");
+        newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        const newTodoDescription = document.createElement("p");
+        newTodoDescription.classList.add('text-xs', 'my-1', 'sm:w-80');
+        const newTodoDueDate = document.createElement('p');
+        newTodoDueDate.classList.add('text-xs', 'underline');
         newTodo.innerText = todoInput.value;
-        todoDiv.appendChild(newTodo);
+        textDiv.appendChild(newTodo);
+        todoDiv.append(textDiv);
         newTodo.addEventListener('dblclick', (e) => {
             const editTodo = prompt('edit todo', newTodo.innerHTML);
             if (editTodo !== null && editTodo !== '') {
@@ -103,11 +109,23 @@ function getTodos() {
     }
     todos.forEach(function (todo) {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
+        const textDiv = document.createElement('div');
         const newTodo = document.createElement("li");
-        newTodo.classList.add("todo-item", "w-28");
+        newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        const newTodoDescription = document.createElement("p");
+        newTodoDescription.classList.add('text-xs', 'my-1', 'sm:w-80');
+        const newTodoDueDate = document.createElement('p');
+        newTodoDueDate.classList.add('text-xs', 'underline');
         newTodo.innerText = todo;
-        todoDiv.appendChild(newTodo);
+        textDiv.appendChild(newTodo);
+        todoDiv.append(textDiv);
+        // const todoDiv = document.createElement("div");
+        // todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
+        // const newTodo = document.createElement("li");
+        // newTodo.classList.add("todo-item", "w-28");
+        // newTodo.innerText = todo;
+        // todoDiv.appendChild(newTodo);
         newTodo.addEventListener('dblclick', (e) => {
             const editTodo = prompt('edit todo', newTodo.innerHTML);
             if (editTodo !== null && editTodo !== '') {
