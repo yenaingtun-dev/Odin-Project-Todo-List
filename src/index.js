@@ -1,5 +1,9 @@
 const form = document.querySelector('#form');
 const todoInput = document.querySelector('#todo');
+const todoDescription = document.querySelector('#description');
+const todoUrgent = document.querySelector('#urgent');
+const todoNotUrgent = document.querySelector('#notUrgent');
+const todoDueDate = document.querySelector('#dueDate');
 const todoList = document.querySelector('.tasks');
 
 document.addEventListener("DOMContentLoaded", getTodos);
@@ -9,16 +13,24 @@ function addTodo(e) {
     e.preventDefault();
     if (todoInput.value !== '') {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
         const textDiv = document.createElement('div');
         const newTodo = document.createElement("li");
-        newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        if (todoNotUrgent.checked) {
+            newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        } else {
+            newTodo.classList.add("todo-item", 'text-red-300', "w-28", 'font-semibold', 'uppercase');
+        }
         const newTodoDescription = document.createElement("p");
         newTodoDescription.classList.add('text-xs', 'my-1', 'sm:w-80');
         const newTodoDueDate = document.createElement('p');
         newTodoDueDate.classList.add('text-xs', 'underline');
         newTodo.innerText = todoInput.value;
+        newTodoDescription.innerHTML = todoDescription.value;
+        newTodoDueDate.innerHTML = todoDueDate.value;
         textDiv.appendChild(newTodo);
+        textDiv.appendChild(newTodoDescription);
+        textDiv.appendChild(newTodoDueDate);
         todoDiv.append(textDiv);
         newTodo.addEventListener('dblclick', (e) => {
             const editTodo = prompt('edit todo', newTodo.innerHTML);
@@ -57,7 +69,13 @@ function addTodo(e) {
         todoDiv.append(btnDiv);
         //attach final Todo
         todoList.appendChild(todoDiv);
-        saveLocalTodos(newTodo.innerHTML);
+        saveLocalTodos({
+            title: newTodo.innerHTML,
+            description: newTodoDescription.innerHTML,
+            duedate: newTodoDueDate.innerHTML,
+            notUrgent: todoNotUrgent.checked,
+            Urgent: todoUrgent.checked,
+        });
     } else {
         alert('u need to add todo');
     }
@@ -109,17 +127,35 @@ function getTodos() {
     }
     todos.forEach(function (todo) {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
+        todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
         const textDiv = document.createElement('div');
         const newTodo = document.createElement("li");
-        newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        if (todo.notUrgent) {
+            newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        } else {
+            newTodo.classList.add("todo-item", 'text-red-300', "w-28", 'font-semibold', 'uppercase');
+        }
         const newTodoDescription = document.createElement("p");
         newTodoDescription.classList.add('text-xs', 'my-1', 'sm:w-80');
         const newTodoDueDate = document.createElement('p');
         newTodoDueDate.classList.add('text-xs', 'underline');
-        newTodo.innerText = todo;
+        newTodo.innerText = todo.title;
+        newTodoDescription.innerHTML = todo.description;
+        newTodoDueDate.innerHTML = todo.duedate;
         textDiv.appendChild(newTodo);
+        textDiv.appendChild(newTodoDescription);
+        textDiv.appendChild(newTodoDueDate);
         todoDiv.append(textDiv);
+        // const newTodo = document.createElement("li");
+        // newTodo.classList.add("todo-item", "w-28", 'font-semibold', 'uppercase');
+        // const newTodoDescription = document.createElement("p");
+        // newTodoDescription.classList.add('text-xs', 'my-1', 'sm:w-80');
+        // const newTodoDueDate = document.createElement('p');
+        // newTodoDueDate.classList.add('text-xs', 'underline');
+        // newTodo.innerText = todo;
+        // textDiv.appendChild(newTodo);
+        // todoDiv.append(textDiv);
+
         // const todoDiv = document.createElement("div");
         // todoDiv.classList.add('todo', 'flex', 'justify-between', 'items-center', 'bg-white', 'rounded-lg', 'px-3', 'py-1', 'mb-2');
         // const newTodo = document.createElement("li");

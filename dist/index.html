@@ -21,7 +21,7 @@
                 <div x-cloak x-transition.opacity x-show="showModal" class="fixed inset-0 bg-black/50"></div>
                 <div x-cloak x-transition x-show="showModal" class="fixed inset-x-0 top-5 z-50 grid place-content-center">
                     <div @click.away="showModal = false" class="rounded-lg w-80 sm:w-[500px] bg-white">
-                            <form action="" class="mb-0 mt-6 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8">
+                            <form id="form" class="mb-0 mt-6 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8">
                                 <p class="text-lg font-medium">Create New Todo</p>
                                 <div>
                                     <div class="relative">
@@ -70,7 +70,7 @@
             </div>
         </form> -->
         <ul class="tasks mt-5 sm:p-2">
-            <div class="flex justify-between space-x-3 bg-white rounded-lg px-3 py-3">
+            <!-- <div class="flex justify-between space-x-3 bg-white rounded-lg px-3 py-3">
                     <div>
                         <li class="text-red-300 font-semibold uppercase">Lorem ipsum.</li>
                         <p class="text-xs my-1 sm:w-80" >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -80,7 +80,7 @@
                         <button class="bg-[#BDE0FE] px-2 py-1 rounded-lg text-teal-600 hover:bg-[#A2D2FF] hover:text-white text-xs">complete</button>
                         <button class="bg-[#FFC8DD] px-2 py-1 rounded-lg hover:bg-[#FFAFCC] hover:text-white text-xs">delete</button>
                     </div>
-                </div>
+                </div> -->
         </ul>
     </section>
 
