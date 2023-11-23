@@ -5,6 +5,7 @@ const todoUrgent = document.querySelector('#urgent');
 const todoNotUrgent = document.querySelector('#notUrgent');
 const todoDueDate = document.querySelector('#dueDate');
 const todoList = document.querySelector('.tasks');
+const formModal = document.querySelector('#formModal');
 
 document.addEventListener("DOMContentLoaded", getTodos);
 form.addEventListener("submit", addTodo);
@@ -39,6 +40,8 @@ function addTodo(e) {
             }
         })
         todoInput.value = "";
+        todoDescription.value = "";
+        todoDueDate.value = "";
         const btnDiv = document.createElement("div");
         // complete button
         const completedButton = document.createElement("button");
@@ -90,6 +93,8 @@ function addTodo(e) {
         todoDiv.append(btnDiv);
         //attach final Todo
         todoList.appendChild(todoDiv);
+        formModal.style.display = 'none';
+        formModal.parentElement.style.display = 'none';
         const newTodoId = Math.random().toString(16).slice(2);
         saveLocalTodos({
             id: newTodoId,

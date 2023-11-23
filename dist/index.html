@@ -19,7 +19,7 @@
             <div x-data="{ showModal: false }" @keydown.window.escape="showModal = false">
                 <button @click="showModal = !showModal" class="text-4xl hover:text-white">+</button>
                 <div x-cloak x-transition.opacity x-show="showModal" class="fixed inset-0 bg-black/50"></div>
-                <div x-cloak x-transition x-show="showModal" class="fixed inset-x-0 top-5 z-50 grid place-content-center">
+                <div x-cloak x-transition x-show="showModal" id="formModal" class="fixed inset-x-0 top-5 z-50 grid place-content-center">
                     <div @click.away="showModal = false" class="rounded-lg w-80 sm:w-[500px] bg-white">
                             <form id="form" class="mb-0 mt-6 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8">
                                 <p class="text-lg font-medium">Create New Todo</p>
