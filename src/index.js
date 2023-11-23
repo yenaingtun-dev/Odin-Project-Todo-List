@@ -117,7 +117,6 @@ function addTodo(e) {
     }
 }
 
-
 function getTodos() {
     let todos;
     if (localStorage.getItem("todos") === null) {
