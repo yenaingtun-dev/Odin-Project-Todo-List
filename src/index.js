@@ -6,13 +6,14 @@ const todoNotUrgent = document.querySelector('#notUrgent');
 const todoDueDate = document.querySelector('#dueDate');
 const todoList = document.querySelector('.tasks');
 const formModal = document.querySelector('#formModal');
+const formBackground = document.querySelector('#formBackground');
 
 document.addEventListener("DOMContentLoaded", getTodos);
 form.addEventListener("submit", addTodo);
 
 function addTodo(e) {
     e.preventDefault();
-    if (todoInput.value !== '') {
+    if (todoInput.value !== '' && todoDueDate.value !== '') {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add('todo', 'flex', 'justify-between', 'space-x-3', 'bg-white', 'rounded-lg', 'px-3', 'py-3', 'mb-2');
         const textDiv = document.createElement('div');
@@ -94,7 +95,7 @@ function addTodo(e) {
         //attach final Todo
         todoList.appendChild(todoDiv);
         formModal.style.display = 'none';
-        formModal.parentElement.style.display = 'none';
+        formBackground.style.display = 'none';
         const newTodoId = Math.random().toString(16).slice(2);
         saveLocalTodos({
             id: newTodoId,
@@ -106,7 +107,13 @@ function addTodo(e) {
             completed: isCompleted,
         });
     } else {
-        alert('u need to add todo');
+        if (todoInput.value === '') {
+            alert('u need to add todo');
+        } else if (todoDueDate.value === '') {
+            alert('u need to add due date');
+        } else {
+            alert('u need to fill form');
+        }
     }
 }
 
