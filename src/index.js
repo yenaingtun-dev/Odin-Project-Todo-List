@@ -7,27 +7,55 @@ const todoDueDate = document.querySelector("#dueDate");
 const todoList = document.querySelector(".tasks");
 const formModal = document.querySelector("#formModal");
 const formBackground = document.querySelector("#formBackground");
+const todoDivClass = [
+    "todo",
+    "flex",
+    "justify-between",
+    "space-x-3",
+    "bg-white",
+    "rounded-lg",
+    "px-3",
+    "py-3",
+    "mb-2",
+];
 
 document.addEventListener("DOMContentLoaded", getTodos);
 form.addEventListener("submit", addTodo);
 
+// validation the input
+function validate(task, date) {
+    if (task !== "" && date !== "") {
+        console.log("herer");
+        return true;
+    } else {
+        if (task.value === "") {
+            alert("u need to add todo");
+            return false;
+        } else if (date.value === "") {
+            alert("u need to add due date");
+            return false;
+        } else {
+            alert("u need to fill form");
+            return false;
+        }
+    }
+}
+
 function addTodo(e) {
     e.preventDefault();
-    if (todoInput.value !== "" && todoDueDate.value !== "") {
+    if (validate(todoInput.value, todoDueDate.value)) {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add(
-            "todo",
-            "flex",
-            "justify-between",
-            "space-x-3",
-            "bg-white",
-            "rounded-lg",
-            "px-3",
-            "py-3",
-            "mb-2"
-        );
         const textDiv = document.createElement("div");
         const newTodo = document.createElement("li");
+        const newTodoDescription = document.createElement("p");
+        const newTodoDueDate = document.createElement("p");
+        const btnDiv = document.createElement("div");
+        const completedButton = document.createElement("button");
+        const trashButton = document.createElement("button");
+        const newTodoId = Math.random().toString(16).slice(2);
+        let isCompleted = false;
+        // return;
+        todoDiv.classList.add(todoDivClass.join(", "));
         if (todoNotUrgent.checked) {
             newTodo.classList.add(
                 "todo-item",
@@ -44,9 +72,7 @@ function addTodo(e) {
                 "uppercase"
             );
         }
-        const newTodoDescription = document.createElement("p");
         newTodoDescription.classList.add("text-xs", "my-1", "sm:w-80");
-        const newTodoDueDate = document.createElement("p");
         newTodoDueDate.classList.add("text-xs", "underline");
         newTodo.innerText = todoInput.value;
         newTodoDescription.innerHTML = todoDescription.value;
@@ -64,9 +90,7 @@ function addTodo(e) {
         todoInput.value = "";
         todoDescription.value = "";
         todoDueDate.value = "";
-        const btnDiv = document.createElement("div");
         // complete button
-        const completedButton = document.createElement("button");
         completedButton.innerHTML = `complete`;
         completedButton.classList.add(
             "complete-btn",
@@ -80,7 +104,6 @@ function addTodo(e) {
             "text-xs"
         );
         btnDiv.appendChild(completedButton);
-        let isCompleted = false;
         completedButton.addEventListener("click", (e) => {
             if (newTodo.style.textDecoration == "line-through") {
                 newTodo.style.textDecoration = "none";
@@ -113,7 +136,6 @@ function addTodo(e) {
             }
         });
         //trash button
-        const trashButton = document.createElement("button");
         trashButton.innerHTML = `delete`;
         trashButton.classList.add(
             "trash-btn",
@@ -136,7 +158,6 @@ function addTodo(e) {
         todoList.appendChild(todoDiv);
         formModal.style.display = "none";
         formBackground.style.display = "none";
-        const newTodoId = Math.random().toString(16).slice(2);
         saveLocalTodos({
             id: newTodoId,
             title: newTodo.innerHTML,
@@ -147,13 +168,7 @@ function addTodo(e) {
             completed: isCompleted,
         });
     } else {
-        if (todoInput.value === "") {
-            alert("u need to add todo");
-        } else if (todoDueDate.value === "") {
-            alert("u need to add due date");
-        } else {
-            alert("u need to fill form");
-        }
+        console.error("fill the form!");
     }
 }
 
