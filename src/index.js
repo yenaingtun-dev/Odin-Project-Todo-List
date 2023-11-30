@@ -18,6 +18,27 @@ const todoDivClass = [
     "py-3",
     "mb-2",
 ];
+const completedButtonClass = [
+    "complete-btn",
+    "bg-[#BDE0FE]",
+    "px-2",
+    "py-1",
+    "mr-1",
+    "rounded-lg",
+    "hover:text-white",
+    "hover:bg-[#A2D2FF]",
+    "text-xs",
+];
+const trashButtonClass = [
+    "trash-btn",
+    "bg-[#FFC8DD]",
+    "px-2",
+    "py-1",
+    "rounded-lg",
+    "hover:text-white",
+    "hover:bg-[#FFAFCC]",
+    "text-xs",
+];
 
 document.addEventListener("DOMContentLoaded", getTodos);
 form.addEventListener("submit", addTodo);
@@ -54,8 +75,7 @@ function addTodo(e) {
         const trashButton = document.createElement("button");
         const newTodoId = Math.random().toString(16).slice(2);
         let isCompleted = false;
-        // return;
-        todoDiv.classList.add(todoDivClass.join(", "));
+        todoDiv.classList.add(...todoDivClass);
         if (todoNotUrgent.checked) {
             newTodo.classList.add(
                 "todo-item",
@@ -92,17 +112,7 @@ function addTodo(e) {
         todoDueDate.value = "";
         // complete button
         completedButton.innerHTML = `complete`;
-        completedButton.classList.add(
-            "complete-btn",
-            "bg-[#BDE0FE]",
-            "px-2",
-            "py-1",
-            "mr-1",
-            "rounded-lg",
-            "hover:text-white",
-            "hover:bg-[#A2D2FF]",
-            "text-xs"
-        );
+        completedButton.classList.add(...completedButtonClass);
         btnDiv.appendChild(completedButton);
         completedButton.addEventListener("click", (e) => {
             if (newTodo.style.textDecoration == "line-through") {
@@ -137,16 +147,7 @@ function addTodo(e) {
         });
         //trash button
         trashButton.innerHTML = `delete`;
-        trashButton.classList.add(
-            "trash-btn",
-            "bg-[#FFC8DD]",
-            "px-2",
-            "py-1",
-            "rounded-lg",
-            "hover:text-white",
-            "hover:bg-[#FFAFCC]",
-            "text-xs"
-        );
+        trashButton.classList.add(...trashButtonClass);
         btnDiv.appendChild(trashButton);
         trashButton.addEventListener("click", (e) => {
             if (confirm("Delete a todo!") == true) {
@@ -181,17 +182,7 @@ function getTodos() {
     }
     todos.forEach(function (todo) {
         const todoDiv = document.createElement("div");
-        todoDiv.classList.add(
-            "todo",
-            "flex",
-            "justify-between",
-            "space-x-3",
-            "bg-white",
-            "rounded-lg",
-            "px-3",
-            "py-3",
-            "mb-2"
-        );
+        todoDiv.classList.add(...todoDivClass);
         const textDiv = document.createElement("div");
         const newTodo = document.createElement("li");
         if (todo.notUrgent) {
@@ -260,17 +251,7 @@ function getTodos() {
         const btnDiv = document.createElement("div");
         const completedButton = document.createElement("button");
         completedButton.innerHTML = `complete`;
-        completedButton.classList.add(
-            "complete-btn",
-            "bg-[#BDE0FE]",
-            "px-2",
-            "py-1",
-            "mr-1",
-            "rounded-lg",
-            "hover:text-white",
-            "hover:bg-[#A2D2FF]",
-            "text-xs"
-        );
+        completedButton.classList.add(...completedButtonClass);
         btnDiv.appendChild(completedButton);
         if (todo.completed) {
             newTodo.style.textDecoration = "line-through";
@@ -311,16 +292,7 @@ function getTodos() {
         //trash button
         const trashButton = document.createElement("button");
         trashButton.innerHTML = `delete`;
-        trashButton.classList.add(
-            "trash-btn",
-            "bg-[#FFC8DD]",
-            "px-2",
-            "py-1",
-            "rounded-lg",
-            "hover:text-white",
-            "hover:bg-[#FFAFCC]",
-            "text-xs"
-        );
+        trashButton.classList.add(...trashButtonClass);
         btnDiv.appendChild(trashButton);
         trashButton.addEventListener("click", (e) => {
             if (confirm("Delete a todo!") == true) {
