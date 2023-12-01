@@ -115,11 +115,12 @@ function addTodo(e) {
         completedButton.classList.add(...completedButtonClass);
         btnDiv.appendChild(completedButton);
         completedButton.addEventListener("click", (e) => {
-            if (newTodo.style.textDecoration == "line-through") {
+            if (isCompleted !== false) {
                 newTodo.style.textDecoration = "none";
                 todoDiv.style.backgroundColor = "white";
                 completedButton.innerHTML = "complete";
-                removeLocalTodos(e.target);
+                removeTodo(e);
+                isCompleted = false;
                 saveLocalTodos({
                     id: newTodoId,
                     title: newTodo.innerHTML,
@@ -129,11 +130,13 @@ function addTodo(e) {
                     urgent: todoUrgent.checked,
                     completed: false,
                 });
+                console.log("false");
             } else {
                 newTodo.style.textDecoration = "line-through";
                 todoDiv.style.backgroundColor = "#CDB4DB";
                 completedButton.innerHTML = "completed";
-                removeLocalTodos(e.target);
+                removeTodo(e);
+                isCompleted = true;
                 saveLocalTodos({
                     id: newTodoId,
                     title: newTodo.innerHTML,
@@ -141,8 +144,9 @@ function addTodo(e) {
                     duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
-                    completed: false,
+                    completed: true,
                 });
+                console.log("true");
             }
         });
         //trash button
@@ -215,7 +219,7 @@ function getTodos() {
         newTodo.addEventListener("dblclick", (e) => {
             const editTodo = prompt("edit todo", newTodo.innerHTML);
             if (editTodo !== null && editTodo !== "") {
-                removeLocalTodos(e.target);
+                removeTodo(e);
                 newTodo.innerHTML = editTodo;
                 saveLocalTodos({
                     id: todo.id,
@@ -304,6 +308,7 @@ function getTodos() {
     });
 }
 
+// save local todo
 function saveLocalTodos(todo) {
     let todos;
     if (localStorage.getItem("todos") === null) {
@@ -313,32 +318,49 @@ function saveLocalTodos(todo) {
     }
     todos.push(todo);
     localStorage.setItem("todos", JSON.stringify(todos));
+    // console.log(todos);
 }
 
+// remove todo
 function removeTodo(e, todoId) {
     const item = e.target;
     if (item.classList[0] === "trash-btn") {
+        // console.log("trash");
         const todo = item.parentElement.parentElement;
         removeLocalTodos(todo);
         todo.remove();
     }
     if (item.classList[0] === "complete-btn") {
+        // console.log("complete");
         const todo = item.parentElement.parentElement;
+        // console.log(todo.children[0].children[0].innerHTML);
+        const todoName = todo.children[0].children[0].innerHTML;
         todo.classList.toggle("completed");
-        removeLocalTodos(todo, todoId);
+        removeLocalTodos(todo, todoId, todoName);
     }
 }
 
-function removeLocalTodos(todo, todoId) {
+// remove local save todos
+function removeLocalTodos(todo, todoId, todoName) {
     let todos;
     if (localStorage.getItem("todos") === null) {
         todos = [];
     } else {
         todos = JSON.parse(localStorage.getItem("todos"));
     }
+    if (!todoName) {
+        todoName = todo.children[0].children[0].innerHTML;
+    }
     // const todoIndex = todo.children[0].innerText;
     // const todoIndex = todo.children[0].getElementsByTagName('li')[0].innerHTML;
     // todos.splice(todos.indexOf(todoIndex), 1);
-    todos.splice(todos.indexOf(todoId), 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    if (todoName) {
+        for (let i = 0; i < todos.length; i++) {
+            if (todos[i].title === todoName) {
+                todos.splice(i, 1);
+            }
+        }
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }
+    // todos.splice(todos.indexOf(todoId), 1);
 }
