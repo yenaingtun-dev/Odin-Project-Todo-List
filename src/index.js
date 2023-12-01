@@ -81,7 +81,8 @@ function addTodo(e) {
         if (todoNotUrgent.checked) {
             newTodo.classList.add(
                 "todo-item",
-                "w-[20rem]",
+                "w-28",
+                "sm:w-[20rem]",
                 "font-semibold",
                 "uppercase"
             );
@@ -89,7 +90,8 @@ function addTodo(e) {
             newTodo.classList.add(
                 "todo-item",
                 "text-red-300",
-                "w-[20rem]",
+                "w-28",
+                "sm:w-[20rem]",
                 "font-semibold",
                 "uppercase"
             );
