@@ -3,7 +3,7 @@ const todoInput = document.querySelector("#todo");
 const todoDescription = document.querySelector("#description");
 const todoUrgent = document.querySelector("#urgent");
 const todoNotUrgent = document.querySelector("#notUrgent");
-const todoDueDate = document.querySelector("#dueDate");
+// const todoDueDate = document.querySelector("#dueDate");
 const todoList = document.querySelector(".tasks");
 const formModal = document.querySelector("#formModal");
 const formBackground = document.querySelector("#formBackground");
@@ -44,18 +44,20 @@ document.addEventListener("DOMContentLoaded", getTodos);
 form.addEventListener("submit", addTodo);
 
 // validation the input
-function validate(task, date) {
-    if (task !== "" && date !== "") {
+function validate(task) {
+    if (task !== "") {
         console.log("herer");
         return true;
     } else {
         if (task.value === "") {
             alert("u need to add todo");
             return false;
-        } else if (date.value === "") {
-            alert("u need to add due date");
-            return false;
-        } else {
+        }
+        //  else if (date.value === "") {
+        //     alert("u need to add due date");
+        //     return false;
+        // }
+        else {
             alert("u need to fill form");
             return false;
         }
@@ -64,12 +66,12 @@ function validate(task, date) {
 
 function addTodo(e) {
     e.preventDefault();
-    if (validate(todoInput.value, todoDueDate.value)) {
+    if (validate(todoInput.value)) {
         const todoDiv = document.createElement("div");
         const textDiv = document.createElement("div");
         const newTodo = document.createElement("li");
         const newTodoDescription = document.createElement("p");
-        const newTodoDueDate = document.createElement("p");
+        // const newTodoDueDate = document.createElement("p");
         const btnDiv = document.createElement("div");
         const completedButton = document.createElement("button");
         const trashButton = document.createElement("button");
@@ -93,13 +95,13 @@ function addTodo(e) {
             );
         }
         newTodoDescription.classList.add("text-xs", "my-1", "sm:w-80");
-        newTodoDueDate.classList.add("text-xs", "underline");
+        // newTodoDueDate.classList.add("text-xs", "underline");
         newTodo.innerText = todoInput.value;
         newTodoDescription.innerHTML = todoDescription.value;
-        newTodoDueDate.innerHTML = todoDueDate.value;
+        // newTodoDueDate.innerHTML = todoDueDate.value;
         textDiv.appendChild(newTodo);
         textDiv.appendChild(newTodoDescription);
-        textDiv.appendChild(newTodoDueDate);
+        // textDiv.appendChild(newTodoDueDate);
         todoDiv.append(textDiv);
         newTodo.addEventListener("dblclick", (e) => {
             const editTodo = prompt("edit todo", newTodo.innerHTML);
@@ -109,7 +111,7 @@ function addTodo(e) {
         });
         todoInput.value = "";
         todoDescription.value = "";
-        todoDueDate.value = "";
+        // todoDueDate.value = "";
         // complete button
         completedButton.innerHTML = `complete`;
         completedButton.classList.add(...completedButtonClass);
@@ -125,12 +127,12 @@ function addTodo(e) {
                     id: newTodoId,
                     title: newTodo.innerHTML,
                     description: newTodoDescription.innerHTML,
-                    duedate: newTodoDueDate.innerHTML,
+                    // duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
                     completed: false,
                 });
-                console.log("false");
+                // console.log("false");
             } else {
                 newTodo.style.textDecoration = "line-through";
                 todoDiv.style.backgroundColor = "#CDB4DB";
@@ -141,12 +143,12 @@ function addTodo(e) {
                     id: newTodoId,
                     title: newTodo.innerHTML,
                     description: newTodoDescription.innerHTML,
-                    duedate: newTodoDueDate.innerHTML,
+                    // duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
                     completed: true,
                 });
-                console.log("true");
+                // console.log("true");
             }
         });
         //trash button
@@ -167,7 +169,7 @@ function addTodo(e) {
             id: newTodoId,
             title: newTodo.innerHTML,
             description: newTodoDescription.innerHTML,
-            duedate: newTodoDueDate.innerHTML,
+            // duedate: newTodoDueDate.innerHTML,
             notUrgent: todoNotUrgent.checked,
             urgent: todoUrgent.checked,
             completed: isCompleted,
@@ -207,14 +209,14 @@ function getTodos() {
         }
         const newTodoDescription = document.createElement("p");
         newTodoDescription.classList.add("text-xs", "my-1", "sm:w-80");
-        const newTodoDueDate = document.createElement("p");
-        newTodoDueDate.classList.add("text-xs", "underline");
+        // const newTodoDueDate = document.createElement("p");
+        // newTodoDueDate.classList.add("text-xs", "underline");
         newTodo.innerText = todo.title;
         newTodoDescription.innerHTML = todo.description;
-        newTodoDueDate.innerHTML = todo.duedate;
+        // newTodoDueDate.innerHTML = todo.duedate;
         textDiv.appendChild(newTodo);
         textDiv.appendChild(newTodoDescription);
-        textDiv.appendChild(newTodoDueDate);
+        // textDiv.appendChild(newTodoDueDate);
         todoDiv.append(textDiv);
         newTodo.addEventListener("dblclick", (e) => {
             const editTodo = prompt("edit todo", newTodo.innerHTML);
@@ -225,7 +227,7 @@ function getTodos() {
                     id: todo.id,
                     title: newTodo.innerHTML,
                     description: newTodoDescription.innerHTML,
-                    duedate: newTodoDueDate.innerHTML,
+                    // duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
                     completed: false,
@@ -244,7 +246,7 @@ function getTodos() {
                     id: todo.id,
                     title: newTodo.innerHTML,
                     description: newTodoDescription.innerHTML,
-                    duedate: newTodoDueDate.innerHTML,
+                    // duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
                     completed: false,
@@ -272,7 +274,7 @@ function getTodos() {
                     id: todo.id,
                     title: newTodo.innerHTML,
                     description: newTodoDescription.innerHTML,
-                    duedate: newTodoDueDate.innerHTML,
+                    // duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
                     completed: false,
@@ -286,7 +288,7 @@ function getTodos() {
                     id: todo.id,
                     title: newTodo.innerHTML,
                     description: newTodoDescription.innerHTML,
-                    duedate: newTodoDueDate.innerHTML,
+                    // duedate: newTodoDueDate.innerHTML,
                     notUrgent: todoNotUrgent.checked,
                     urgent: todoUrgent.checked,
                     completed: true,
